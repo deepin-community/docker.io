@@ -1,0 +1,18 @@
+From: Arnaud Rebillout <elboulangero@gmail.com>
+Date: Tue, 1 Dec 2020 10:30:25 +0700
+Subject: Skip test in pbuilder
+
+Forwarded: not-needed, Debian-specific
+
+Index: docker/engine/daemon/oci_linux_test.go
+===================================================================
+--- docker.orig/engine/daemon/oci_linux_test.go
++++ docker/engine/daemon/oci_linux_test.go
+@@ -191,6 +191,7 @@ func TestSysctlOverrideHost(t *testing.T
+ }
+ 
+ func TestGetSourceMount(t *testing.T) {
++	skip.If(t, os.Getenv("PBUILDER_OPERATION") != "", "DM - skip test for pbuilder: Can't find mount point of /")
+ 	// must be able to find source mount for /
+ 	mnt, _, err := getSourceMount("/")
+ 	assert.NilError(t, err)
