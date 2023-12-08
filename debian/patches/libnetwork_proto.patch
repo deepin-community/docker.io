@@ -1,0 +1,41 @@
+Last-Update: 2018-06-15
+Forwarded: not-needed
+Author: Dmitry Smirnov <onlyjob@debian.org>
+Description: fix generation of .pb.go files.
+
+Index: docker/libnetwork/drivers/overlay/overlay.go
+===================================================================
+--- docker.orig/libnetwork/drivers/overlay/overlay.go
++++ docker/libnetwork/drivers/overlay/overlay.go
+@@ -1,6 +1,6 @@
+ package overlay
+ 
+-//go:generate protoc -I.:../../Godeps/_workspace/src/github.com/gogo/protobuf  --gogo_out=import_path=github.com/docker/libnetwork/drivers/overlay,Mgogoproto/gogo.proto=github.com/gogo/protobuf/gogoproto:. overlay.proto
++//go:generate protoc -I.:../../../../../github.com/gogo/protobuf  --gogo_out=import_path=github.com/docker/libnetwork/drivers/overlay,Mgogoproto/gogo.proto=github.com/gogo/protobuf/gogoproto:. overlay.proto
+ 
+ import (
+ 	"context"
+Index: docker/libnetwork/agent.go
+===================================================================
+--- docker.orig/libnetwork/agent.go
++++ docker/libnetwork/agent.go
+@@ -1,6 +1,6 @@
+ package libnetwork
+ 
+-//go:generate protoc -I.:Godeps/_workspace/src/github.com/gogo/protobuf  --gogo_out=import_path=github.com/docker/libnetwork,Mgogoproto/gogo.proto=github.com/gogo/protobuf/gogoproto:. agent.proto
++//go:generate protoc -I.:../../../github.com/gogo/protobuf  --gogo_out=import_path=github.com/docker/libnetwork,Mgogoproto/gogo.proto=github.com/gogo/protobuf/gogoproto:. agent.proto
+ 
+ import (
+ 	"encoding/json"
+Index: docker/libnetwork/networkdb/networkdb.go
+===================================================================
+--- docker.orig/libnetwork/networkdb/networkdb.go
++++ docker/libnetwork/networkdb/networkdb.go
+@@ -1,6 +1,6 @@
+ package networkdb
+ 
+-//go:generate protoc -I.:../vendor/github.com/gogo/protobuf --gogo_out=import_path=github.com/docker/libnetwork/networkdb,Mgogoproto/gogo.proto=github.com/gogo/protobuf/gogoproto:. networkdb.proto
++//go:generate protoc -I.:../../../../github.com/gogo/protobuf --gogo_out=import_path=github.com/docker/libnetwork/networkdb,Mgogoproto/gogo.proto=github.com/gogo/protobuf/gogoproto:. networkdb.proto
+ 
+ import (
+ 	"context"

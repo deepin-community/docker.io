@@ -1,0 +1,27 @@
+Subject: [PATCH] Update uses of Image platform fields in OCI image-spec
+Origin: https://github.com/moby/buildkit/pull/3104
+Applied-Upstream: buildkit v0.11, engine v25
+Author: Sebastiaan van Stijn <github@gone.nl>
+
+diff --git a/engine/vendor/github.com/moby/buildkit/frontend/dockerfile/dockerfile2llb/image.go b/engine/vendor/github.com/moby/buildkit/frontend/dockerfile/dockerfile2llb/image.go
+index f6e667f899a9..70d81262bcf2 100644
+--- a/engine/vendor/github.com/moby/buildkit/frontend/dockerfile/dockerfile2llb/image.go
++++ b/engine/vendor/github.com/moby/buildkit/frontend/dockerfile/dockerfile2llb/image.go
+@@ -65,13 +65,10 @@ func clone(src Image) Image {
+ }
+ 
+ func emptyImage(platform specs.Platform) Image {
+-	img := Image{
+-		Image: specs.Image{
+-			Architecture: platform.Architecture,
+-			OS:           platform.OS,
+-		},
+-		Variant: platform.Variant,
+-	}
++	img := Image{}
++	img.Architecture = platform.Architecture
++	img.OS = platform.OS
++	img.Variant = platform.Variant
+ 	img.RootFS.Type = "layers"
+ 	img.Config.WorkingDir = "/"
+ 	img.Config.Env = []string{"PATH=" + system.DefaultPathEnv(platform.OS)}
