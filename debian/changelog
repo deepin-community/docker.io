@@ -1,3 +1,9 @@
+docker.io (20.10.25+dfsg1-2deepin1) unstable; urgency=medium
+
+  * fix: DM - skip test for pbuilder and OBS: Can't find mount point of /.
+
+ -- LiChengGang <lichenggang@uniontech.com>  Tue, 23 Apr 2024 18:08:51 +0800
+
 docker.io (20.10.25+dfsg1-2) unstable; urgency=medium
 
   * Backport https://github.com/moby/buildkit/pull/3104 to fix FTBFS (due to
