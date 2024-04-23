@@ -12,7 +12,7 @@ Index: docker/engine/daemon/oci_linux_test.go
  }
  
  func TestGetSourceMount(t *testing.T) {
-+	skip.If(t, os.Getenv("PBUILDER_OPERATION") != "", "DM - skip test for pbuilder: Can't find mount point of /")
++	t.Skip("DM - skip test for pbuilder and OBS: Can't find mount point of /")
  	// must be able to find source mount for /
  	mnt, _, err := getSourceMount("/")
  	assert.NilError(t, err)
