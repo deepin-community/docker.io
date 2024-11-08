@@ -89,7 +89,7 @@ In `d/rules`, you will find that there are two ways to build components:
 
 A full build (using `DH_GOPKG=...`) is definitely needed for components that
 produce a binary (ie. libnetwork). But for components that are only used as
-build dependencies of docker (ie. swarmkit), a full build is not mandatory,
+build dependencies of docker, a full build is not mandatory,
 we can simply run `DH_GOLANG_BUILDPKG=...`. It will at least attempt to build
 the main package.
 
