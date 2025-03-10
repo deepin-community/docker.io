@@ -117,7 +117,7 @@ Files-Excluded:
     vendor/github.com/mistifyio/go-zfs
     vendor/github.com/mitchellh/hashstructure
     vendor/github.com/mitchellh/mapstructure
-   ~vendor/github.com/moby/buildkit
+    vendor/github.com/moby/buildkit
     vendor/github.com/moby/docker-image-spec
    ~vendor/github.com/moby/ipvs
     vendor/github.com/moby/locker
@@ -198,17 +198,7 @@ Copyright: 2014-2016 The Docker & Go Authors
 License: BSD-3-clause-Google
 
 Files:
-    swarmkit/ca/pkcs8/pkcs8.go
-Copyright: 2014 youmark
-License: Expat
-
-Files:
-    swarmkit/protobuf/plugin/raftproxy/test/service.proto
-Copyright: 2015, Google Inc.
-License: BSD-3-clause-Google
-
-Files:
-    */vendor/github.com/moby/buildkit/*
+    buildkit/*
 Copyright:
     The BuildKit Authors
     The containerd authors

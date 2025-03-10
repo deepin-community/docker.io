@@ -41,6 +41,7 @@ fi
 # components, with optional '=VERSION'
 COMPONENTS=(
 "docker/cli=v$( debian/helpers/real-upstream-version.sh "$VERSION" )"
+"moby/buildkit"
 )
 
 DEB_SOURCE="$( dpkg-parsechangelog -SSource )"

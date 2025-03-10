@@ -10,6 +10,8 @@ cli-add-go.mod-file.patch
 engine-add-go.mod-file.patch
 engine-avoid-hcsshim.patch
 engine-ftbfs-mips.patch
+engine-backport-48368-netlink-update.patch
+engine-backport-48407-netlink-EINTR.patch
 
 #libnetwork_proto.patch
 
@@ -29,3 +31,5 @@ test--cli-TestInitializeFromClientHangs.patch
 test--cli-TestUseHostOverrideEmpty.patch
 test--cli-TestCloseRunningCommand.patch
 grpc-middleware-v1.patch
+buildkit-remove-hcsshim.patch
+buildkit-remove-jaeger.patch
