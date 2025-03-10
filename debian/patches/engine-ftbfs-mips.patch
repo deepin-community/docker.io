@@ -2,10 +2,10 @@ From: Tianon Gravi <tianon@debian.org>
 Description: Fix FTBFS on mips
 Bug-Upstream: https://github.com/moby/buildkit/issues/5129
 
-Index: docker.io/engine/vendor/github.com/moby/buildkit/snapshot/diffapply_unix.go
+Index: docker.io/buildkit/snapshot/diffapply_unix.go
 ===================================================================
---- docker.io.orig/engine/vendor/github.com/moby/buildkit/snapshot/diffapply_unix.go
-+++ docker.io/engine/vendor/github.com/moby/buildkit/snapshot/diffapply_unix.go
+--- docker.io.orig/buildkit/snapshot/diffapply_unix.go
++++ docker.io/buildkit/snapshot/diffapply_unix.go
 @@ -128,7 +128,7 @@ func statInode(stat *syscall.Stat_t) ino
  	}
  	return inode{

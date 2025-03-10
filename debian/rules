@@ -26,6 +26,7 @@ export DH_GOLANG_EXCLUDES := \
 # Package names
 CLI_PKG        := github.com/docker/cli
 ENGINE_PKG     := github.com/docker/docker
+BUILDKIT_PKG   := github.com/moby/buildkit
 
 # Version and commits
 DOCKER_VERSION := $(DEB_VERSION_UPSTREAM)
@@ -71,7 +72,7 @@ BUILT_LIBC := $(shell dpkg-query -f '$${source:Package} (= $${source:Version})' 
 
 override_dh_golang:
 ## Set DH_GOLANG_BUILDPKG so that Built-Using is properly generated.
-	DH_GOLANG_BUILDPKG="$(CLI_PKG)/... $(ENGINE_PKG)/..." \
+	DH_GOLANG_BUILDPKG="$(CLI_PKG)/... $(ENGINE_PKG)/... $(BUILDKIT_PKG)/..." \
 	  dh_golang -O--buildsystem=golang -O--builddirectory=_build
 
 override_dh_clean:
@@ -90,6 +91,7 @@ override_dh_auto_configure:
 ## even if they are provided by already installed package.
 	mkdir -pv $(GOPATH)/src/$(CLI_PKG)
 	mkdir -pv $(GOPATH)/src/$(ENGINE_PKG)
+	mkdir -pv $(GOPATH)/src/$(BUILDKIT_PKG)
 
 ## Prepare builddirectory but throw away sourcedirectory.
 	DH_GOPKG="__IGNORE__" dh_auto_configure
@@ -106,9 +108,16 @@ override_dh_auto_configure:
 	cp -ra  cli           $(GOPATH)/src/$(CLI_PKG)
 	$(RM) -r              $(GOPATH)/src/$(ENGINE_PKG)
 	cp -ra  engine        $(GOPATH)/src/$(ENGINE_PKG)
+	$(RM) -r              $(GOPATH)/src/$(BUILDKIT_PKG)
+	cp -ra  buildkit      $(GOPATH)/src/$(BUILDKIT_PKG)
 
 override_dh_auto_build:
 ## Order is important:
+
+	# enable when we start additional binaries, such as buildkitd, etc.
+	# GENERATE=0 avoid protoc and gogoprotobuf dependencies
+	#DH_GOPKG=$(BUILDKIT_PKG) DH_GOLANG_GO_GENERATE=0 dh_auto_build -v
+
 	DH_GOPKG=$(ENGINE_PKG) DH_GOLANG_BUILDPKG=$(ENGINE_PKG)/cmd/dockerd \
 	  dh_auto_build -v -- -tags '$(ENGINE_BUILDTAGS)' $(ENGINE_BUILDMODE) -ldflags '$(ENGINE_LDFLAGS)'
 

@@ -151,6 +151,9 @@ Vcs-Browser: https://salsa.debian.org/go-team/packages/docker
 Vcs-Git: https://salsa.debian.org/go-team/packages/docker.git
 Rules-Requires-Root: no
 XS-Go-Import-Path: github.com/docker/docker
+    ,github.com/docker/cli
+    ,github.com/moby/buildkit
+    ,github.com/moby/ipvs
 
 Package: docker.io
 Architecture: linux-any
@@ -215,6 +218,7 @@ Conflicts:
 # the version of "docker.io" prior to the introduction of the separate "docker-cli" package
 Replaces: docker.io (<< 26.1.4+dfsg1-7~)
 Breaks: docker.io (<< 26.1.4+dfsg1-7~)
+Recommends: docker-buildx
 Suggests: docker-doc
 Built-Using: ${libc:Built-Using}, ${misc:Built-Using}
 Description: Linux container runtime -- client
@@ -238,9 +242,13 @@ Depends: ${misc:Depends}
     ,golang-github-docker-go-metrics-dev
     ,golang-github-docker-go-units-dev (>= 0.4.0~)
     ,golang-github-docker-libkv-dev
+    ,golang-github-docker-notary-dev (>= 0.7.0+git20240416)
     ,golang-github-distribution-reference-dev
     ,golang-github-fsnotify-fsnotify-dev
+    ,golang-github-fvbommel-sortorder-dev
+    ,golang-github-gogo-googleapis-dev
     ,golang-github-gorilla-mux-dev (>= 1.7.1~)
+    ,golang-github-in-toto-in-toto-golang-dev
     ,golang-github-mitchellh-hashstructure-dev (>= 2.0.2)
     ,golang-github-moby-docker-image-spec-dev
     ,golang-github-moby-locker-dev
@@ -254,7 +262,10 @@ Depends: ${misc:Depends}
     ,golang-github-opencontainers-runc-dev (>= 1.0.0~rc8~)
     ,golang-github-opencontainers-selinux-dev (>= 1.8.0~)
     ,golang-github-sirupsen-logrus-dev (>= 1.0.2~)
+    ,golang-github-spf13-cobra-dev (>= 1.1.1~)
     ,golang-github-tchap-go-patricia-dev
+    ,golang-github-tonistiigi-fsutil-dev
+    ,golang-github-tonistiigi-units-dev
     ,golang-golang-x-net-dev
     ,golang-golang-x-sys-dev (>= 0.0~git20190726~)
     ,golang-opentelemetry-contrib-dev (>= 0.42)

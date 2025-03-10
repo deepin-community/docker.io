@@ -1,3 +1,44 @@
+docker.io (26.1.5+dfsg1-9) unstable; urgency=medium
+
+  * Add buildx to Recommends of cli (Closes: #1087370)
+
+ -- Tianon Gravi <tianon@debian.org>  Fri, 21 Feb 2025 11:17:16 -0800
+
+docker.io (26.1.5+dfsg1-8) unstable; urgency=medium
+
+  * Fix netlink via moby/moby#48368 + moby/moby#48407 (Closes: #1092165)
+  * Update "basic-smoke" test to validate #1092165 fix
+  * Update "basic-smoke" test to use bookworm (instead of bullseye)
+
+ -- Tianon Gravi <tianon@debian.org>  Thu, 20 Feb 2025 14:27:26 -0800
+
+docker.io (26.1.5+dfsg1-7) unstable; urgency=medium
+
+  * Upload to unstable
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sun, 16 Feb 2025 15:27:11 -0500
+
+docker.io (26.1.5+dfsg1-6) experimental; urgency=medium
+
+  [ Nicolas Peugnet ]
+  * Add more docker/cli packages to golang-github-docker-docker-dev
+  * Add the importpaths of other modules present in golang-github-docker-docker-dev
+  * Selectively install packages from buildkit
+
+  [ Reinhard Tartler ]
+  * Package buildkit as extra component in the upstream tarball
+  * buildkit: avoid hcsshim, jaeger dependencies
+
+ -- Reinhard Tartler <siretart@tauware.de>  Mon, 10 Feb 2025 10:27:05 -0500
+
+docker.io (26.1.5+dfsg1-5) experimental; urgency=medium
+
+  [ Nicolas Peugnet ]
+  * Fix location of libnetwork in golang-github-docker-docker-dev
+  * Add github.com/docker/cli/cli/connhelper to golang-github-docker-docker-dev
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 01 Feb 2025 12:06:39 -0500
+
 docker.io (26.1.5+dfsg1-4) unstable; urgency=medium
 
   * Upload to unstable
